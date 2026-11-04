@@ -46,7 +46,7 @@
     "react-dom": "19.3.0",
     "recharts": "^3.8.0",
     "sharp": "^0.35.5",
-    "zod": "^4.6.6"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",
