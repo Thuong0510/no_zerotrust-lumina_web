@@ -1,0 +1,65 @@
+'use client';
+import { useState, useEffect } from 'react';
+import { Save, ShieldCheck, Download, Search, LockKeyhole, User, Wallet, Package, ShoppingBag, Users, CalendarDays } from 'lucide-react';
+import { api, money, date, downloadCSV } from '../../lib/client';
+import { Badge, PageTitle, Table, Pager, ErrorBox, Metric } from './ui';
+import { RevenueChart } from './dashboard';
+import { useList } from './entity-page';
+export function RolesPage({ data, reload, notify }: {
+    data: any;
+    reload: () => void;
+    notify: (s: string) => void;
+}) { const [role, setRole] = useState(2), [selected, setSelected] = useState<number[]>([]), [error, setError] = useState(''), [busy, setBusy] = useState(false); useEffect(() => setSelected(data.assignments.filter((r: any) => r.role_id === role).map((r: any) => r.permission_id)), [role, data]); async function save() { setBusy(true); try {
+    await api('roles', 'PUT', { role_id: role, permission_ids: selected });
+    reload();
+    notify('Đã cập nhật quyền. Các API áp dụng ngay ở yêu cầu tiếp theo.');
+}
+catch (e: any) {
+    setError(e.message);
+}
+finally {
+    setBusy(false);
+} } const groups = Array.from(new Set<string>(data.permissions.map((p: any) => p.name.split('.')[0]))); return <><PageTitle eyebrow="ORGANIZATION / ACCESS CONTROL" title="Roles & Permissions" subtitle="Đúng người, đúng quyền. Quản lý quyền truy cập tại một nơi."><button className="btn primary" disabled={role === 1 || busy} onClick={save}><Save size={15}/>Lưu phân quyền</button></PageTitle><ErrorBox error={error}/><div className="role-layout"><aside className="panel role-select">{data.roles.map((r: any) => <button className={role === r.id ? 'active' : ''} key={r.id} onClick={() => setRole(r.id)}><ShieldCheck size={19}/><div><strong>{r.name}</strong><small>{r.id === 1 ? 'Toàn quyền hệ thống' : r.id === 2 ? 'Nhân viên doanh nghiệp' : 'Truy cập giới hạn'}</small></div></button>)}<p>Admin luôn có toàn quyền. Quyền của Employee và Guest có thể điều chỉnh.</p></aside><section className="panel permission-panel"><div className="panel-heading"><div><h3>{data.roles.find((r: any) => r.id === role)?.name} permissions</h3><p>Backend kiểm tra quyền ở từng thao tác.</p></div><Badge>{role === 1 ? data.permissions.length : selected.length} quyền</Badge></div><div className="permission-groups">{groups.map(g => <div key={g}><h4>{g}</h4>{data.permissions.filter((p: any) => p.name.startsWith(g + '.')).map((p: any) => <label className="checkbox" key={p.id}><input type="checkbox" disabled={role === 1 || (role === 3 && !['product.view','notification.view'].includes(p.name)) || ['employee.view','employee.manage','user.manage','role.manage','report.view','activity.view','supplier.view','supplier.manage','category.manage','customer.manage','notification.manage'].includes(p.name)} checked={role === 1 || selected.includes(p.id)} onChange={e => setSelected(e.target.checked ? [...selected, p.id] : selected.filter(v => v !== p.id))}/>{p.name}</label>)}</div>)}</div></section></div></>; }
+function range(period: string) { const now = new Date(); let from = new Date(now); if (period === 'week') {
+    const day = (now.getDay() + 6) % 7;
+    from.setDate(now.getDate() - day);
+} if (period === 'month')
+    from = new Date(now.getFullYear(), now.getMonth(), 1); if (period === 'year')
+    from = new Date(now.getFullYear(), 0, 1); const fmt = (d: Date) => [d.getFullYear(), String(d.getMonth() + 1).padStart(2, '0'), String(d.getDate()).padStart(2, '0')].join('-'); return { from: fmt(from), to: fmt(now) }; }
+export function ReportsPage({ notify }: {
+    notify: (s: string) => void;
+}) { const [period, setPeriod] = useState('year'), [dates, setDates] = useState(range('year')), [data, setData] = useState<any>(), [tab, setTab] = useState('sales'), [error, setError] = useState(''), [busy, setBusy] = useState(true); useEffect(() => { let live = true; setBusy(true); api('reports?from=' + dates.from + '&to=' + dates.to).then(r => { if (live) {
+    setData(r);
+    setError('');
+} }).catch(e => { if (live)
+    setError(e.message); }).finally(() => { if (live)
+    setBusy(false); }); return () => { live = false; }; }, [dates]); const cols: Record<string, any[]> = { sales: [{ key: 'code', label: 'Mã đơn' }, { key: 'customer', label: 'Khách hàng' }, { key: 'date', label: 'Ngày' }, { key: 'total', label: 'Giá trị', render: (r: any) => money(r.total) }, { key: 'status', label: 'Trạng thái', render: (r: any) => <Badge>{r.status}</Badge> }], monthly: [{ key: 'month', label: 'Tháng' }, { key: 'orders', label: 'Đơn hàng' }, { key: 'revenue', label: 'Doanh thu', render: (r: any) => money(r.revenue) }], products: [{ key: 'name', label: 'Sản phẩm' }, { key: 'sku', label: 'SKU' }, { key: 'quantity', label: 'Đã bán' }, { key: 'revenue', label: 'Doanh thu', render: (r: any) => money(r.revenue) }, { key: 'profit', label: 'Lợi nhuận gộp', render: (r: any) => money(r.profit) }], inventory: [{ key: 'name', label: 'Sản phẩm' }, { key: 'sku', label: 'SKU' }, { key: 'quantity', label: 'Tồn kho hiện tại' }, { key: 'status', label: 'Trạng thái', render: (r: any) => <Badge>{r.status}</Badge> }], customers: [{ key: 'name', label: 'Khách hàng' }, { key: 'email', label: 'Email' }, { key: 'orders', label: 'Đơn hàng' }, { key: 'spending', label: 'Tổng chi tiêu', render: (r: any) => money(r.spending) }] }; return <><PageTitle eyebrow="ANALYTICS / BUSINESS INSIGHTS" title="Reports & Analytics" subtitle="Hiểu dữ liệu. Đưa ra quyết định tốt hơn."><button className="btn primary" disabled={!data} onClick={() => downloadCSV(data[tab], 'lumina-' + tab + '-' + dates.from)}><Download size={15}/>Xuất báo cáo CSV</button></PageTitle><ErrorBox error={error}/><section className="report-filters"><CalendarDays size={17}/><select value={period} onChange={e => { setPeriod(e.target.value); if (e.target.value !== 'custom')
+    setDates(range(e.target.value)); }}><option value="today">Hôm nay</option><option value="week">Tuần này</option><option value="month">Tháng này</option><option value="year">Năm nay</option><option value="custom">Tùy chỉnh</option></select><input type="date" aria-label="Từ ngày" value={dates.from} onChange={e => { setPeriod('custom'); setDates({ ...dates, from: e.target.value }); }}/><span>đến</span><input type="date" aria-label="Đến ngày" value={dates.to} onChange={e => { setPeriod('custom'); setDates({ ...dates, to: e.target.value }); }}/>{busy && <small>Đang cập nhật…</small>}</section>{data && <><div className="metrics"><Metric title="Doanh thu hoàn tất" value={money(data.sales.filter((r: any) => r.status === 'Completed').reduce((s: number, r: any) => s + r.total, 0))} icon={Wallet}/><Metric title="Đơn hàng trong kỳ" value={data.sales.length} icon={ShoppingBag}/><Metric title="Sản phẩm đã bán" value={data.products.reduce((s: number, r: any) => s + r.quantity, 0)} icon={Package}/><Metric title="Khách có giao dịch" value={data.customers.filter((r: any) => r.orders > 0).length} icon={Users}/></div><section className="panel"><div className="panel-heading"><div><h3>Doanh thu theo tháng</h3><p>Trong khoảng thời gian đã chọn</p></div></div><RevenueChart data={data.monthly}/></section><section className="panel report-table"><nav className="tab-bar">{Object.entries({ sales: 'Sales', monthly: 'Revenue', products: 'Products', inventory: 'Inventory', customers: 'Customers' }).map(([k, v]) => <button key={k} className={tab === k ? 'active' : ''} onClick={() => setTab(k)}>{v}</button>)}</nav>{tab === 'inventory' && <p className="help-text padded">Tồn kho là số liệu hiện tại; các báo cáo bán hàng, doanh thu, sản phẩm và khách hàng áp dụng khoảng ngày.</p>}<Table rows={data[tab]} columns={cols[tab]}/></section></>}</>; }
+export function ProfilePage({ user, onSaved, notify }: {
+    user: any;
+    onSaved: () => void;
+    notify: (s: string) => void;
+}) { const [error, setError] = useState(''), [busy, setBusy] = useState(false), [avatar, setAvatar] = useState(user.avatar || ''), [tab, setTab] = useState('profile'); async function upload(file?: File) { if (!file)
+    return; const f = new FormData(); f.append('file', file); try {
+    setAvatar((await api('upload', 'POST', f)).url);
+}
+catch (e: any) {
+    setError(e.message);
+} } async function save(e: React.FormEvent<HTMLFormElement>) { e.preventDefault(); setBusy(true); setError(''); const data = Object.fromEntries(new FormData(e.currentTarget)); try {
+    await api(tab === 'profile' ? 'profile' : 'auth/change-password', tab === 'profile' ? 'PUT' : 'POST', tab === 'profile' ? { ...data, avatar } : data);
+    notify(tab === 'profile' ? 'Đã cập nhật hồ sơ.' : 'Đã thay đổi mật khẩu.');
+    const currentPassword = (e.target as HTMLFormElement).elements.namedItem('current_password') as HTMLInputElement | null;
+    if (currentPassword) currentPassword.value = '';
+    onSaved();
+    if (tab === 'password')
+        (e.target as HTMLFormElement).reset();
+}
+catch (e: any) {
+    setError(e.message);
+}
+finally {
+    setBusy(false);
+} } return <><PageTitle eyebrow="YOUR WORKSPACE / PERSONAL" title="My Profile" subtitle="Một chút về bạn, để đội ngũ kết nối tốt hơn."/><div className="profile-layout"><aside className="panel profile-card"><div className="profile-avatar">{avatar ? <img src={avatar} alt={user.name}/> : user.name.split(' ').slice(-2).map((v: string) => v[0]).join('')}</div><h2>{user.name}</h2><p>@{user.username}</p><Badge>{user.role}</Badge><dl><div><dt>Phòng ban</dt><dd>{user.department || 'Chưa liên kết nhân viên'}</dd></div><div><dt>Chức vụ</dt><dd>{user.position || '—'}</dd></div><div><dt>Email</dt><dd>{user.email}</dd></div></dl>{<label className="upload-profile">Thay ảnh đại diện<input type="file" accept="image/png,image/jpeg" onChange={e => upload(e.target.files?.[0])}/></label>}</aside><section className="panel profile-editor"><nav className="tab-bar"><button className={tab === 'profile' ? 'active' : ''} onClick={() => { setTab('profile'); setError(''); }}><User size={15}/>Thông tin cá nhân</button><button className={tab === 'password' ? 'active' : ''} onClick={() => { setTab('password'); setError(''); }}><LockKeyhole size={15}/>Đổi mật khẩu</button></nav><form key={tab} onSubmit={save}><ErrorBox error={error}/>{tab === 'profile' ? <div className="form-grid"><label>Họ và tên<input required name="name" defaultValue={user.name} minLength={2}/></label><label>Username<input disabled value={user.username}/></label><label>Email<input name="email" type="email" required defaultValue={user.email}/></label><label>Số điện thoại<input name="phone" defaultValue={user.phone || ''}/></label><label>Vai trò<input disabled value={user.role}/></label><label>Phòng ban<input disabled value={user.department || '—'}/></label></div> : <><label>Mật khẩu hiện tại<input name="old_password" type="password" required autoComplete="current-password"/></label><label>Mật khẩu mới<input name="password" type="password" required minLength={8} maxLength={128} autoComplete="new-password"/></label><label>Xác nhận mật khẩu mới<input name="confirm" type="password" required minLength={8} autoComplete="new-password"/></label><p className="help-text">Sau khi đổi mật khẩu, các phiên đăng nhập khác sẽ kết thúc.</p></>}{tab === 'profile' && <label>Mật khẩu hiện tại (bắt buộc khi đổi email)<input name="current_password" type="password" maxLength={128} autoComplete="current-password"/><span className="help-text">Đổi email sẽ kết thúc các phiên khác và vô hiệu hóa liên kết đặt lại mật khẩu cũ.</span></label>}<footer className="modal-footer"><button className="btn primary" disabled={busy}><Save size={15}/>{busy ? 'Đang lưu…' : 'Lưu thay đổi'}</button></footer></form></section></div></>; }
+export function ActivityPage({ rows }: {
+    rows: any[];
+}) { const [search, setSearch] = useState(''), [page, setPage] = useState(1); useEffect(() => setPage(1), [search]); const filtered = rows.filter(r => Object.values(r).some(v => String(v ?? '').toLowerCase().includes(search.toLowerCase()))); return <><PageTitle eyebrow="SYSTEM / AUDIT TRAIL" title="Activity Logs" subtitle="Lịch sử thao tác quan trọng, rõ ràng và có thể đối chiếu."><button className="btn" onClick={() => downloadCSV(filtered, 'activity-logs')}><Download size={15}/>Xuất CSV</button></PageTitle><section className="panel"><div className="list-toolbar"><div className="list-tab">Nhật ký gần đây <span className="count-pill">{rows.length}</span></div><div className="search-input"><Search size={15}/><input placeholder="Tìm người dùng, hành động…" value={search} onChange={e => setSearch(e.target.value)}/></div></div><Table rows={filtered.slice((page - 1) * 8, page * 8)} columns={[{ key: 'created_at', label: 'Thời gian', render: (r: any) => new Date(r.created_at.includes('T') ? r.created_at : r.created_at.replace(' ', 'T') + 'Z').toLocaleString('vi-VN') }, { key: 'username', label: 'Người dùng' }, { key: 'action', label: 'Hành động', render: (r: any) => <span className="log-action">{r.action}</span> }, { key: 'resource', label: 'Tài nguyên' }, { key: 'ip', label: 'IP Address' }]}/><Pager page={page} total={filtered.length} setPage={setPage}/></section></>; }

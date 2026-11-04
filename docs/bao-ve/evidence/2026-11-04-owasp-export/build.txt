@@ -1,0 +1,23 @@
+
+> lumina-mvc-vercel@1.0.0 build
+> npm run typecheck && vite build --config frontend/vite.config.ts
+
+
+> lumina-mvc-vercel@1.0.0 typecheck
+> tsc --noEmit
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 2493 modules transformed.
+rendering chunks...
+computing gzip size...
+frontend/dist/index.html                   0.50 kB │ gzip:   0.37 kB
+frontend/dist/assets/index-_5unYfzo.css   48.70 kB │ gzip:  10.99 kB
+frontend/dist/assets/index-Dl13l87U.js   755.70 kB │ gzip: 219.40 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 671ms

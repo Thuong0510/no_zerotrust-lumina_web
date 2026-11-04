@@ -1,0 +1,5 @@
+
+> lumina-mvc-vercel@1.0.0 test:storefront
+> node --import tsx tests/storefront.tsx
+
+Passed storefront: anonymous home/detail/policy, login gate, resumed cart, Guest COD/cancel, no management UI/API, logout isolation, filters and Admin/Employee routing.

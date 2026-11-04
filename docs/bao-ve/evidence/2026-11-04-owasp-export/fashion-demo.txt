@@ -1,0 +1,6 @@
+Applied migration 001_initial.sql
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+Applied migration 004_user_soft_delete.sql
+Test SQL error: new row for relation "customers" violates check constraint "seed_failure_probe" SQL: INSERT INTO customers(name,email,phone,address) VALUES($1,$2,$3,$4) RETURNING id
+PASS: counts, linked totals, stock ledger, preservation, concurrent/rerun safety, collision handling, product/order/role/notification cases.

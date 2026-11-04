@@ -1,0 +1,44 @@
+[
+  {
+    "name": "shopping",
+    "command": "node --import tsx tests/shopping.tsx",
+    "exitCode": 0,
+    "seconds": 19.0
+  },
+  {
+    "name": "storefront",
+    "command": "node --import tsx tests/storefront.tsx",
+    "exitCode": 0,
+    "seconds": 3.9
+  },
+  {
+    "name": "navigation",
+    "command": "node --import tsx tests/navigation.tsx",
+    "exitCode": 0,
+    "seconds": 7.1
+  },
+  {
+    "name": "request-url",
+    "command": "node --import tsx tests/request-url.ts",
+    "exitCode": 0,
+    "seconds": 0.2
+  },
+  {
+    "name": "accounts-ui",
+    "command": "node --import tsx tests/accounts-ui.tsx",
+    "exitCode": 0,
+    "seconds": 2.5
+  },
+  {
+    "name": "api-routing",
+    "command": "node --import tsx tests/api-routing.ts",
+    "exitCode": 0,
+    "seconds": 0.2
+  },
+  {
+    "name": "fashion-demo",
+    "command": "node --import tsx tests/fashion-demo.ts",
+    "exitCode": 0,
+    "seconds": 2.8
+  }
+]

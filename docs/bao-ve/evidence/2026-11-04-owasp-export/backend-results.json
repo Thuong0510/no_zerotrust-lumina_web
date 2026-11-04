@@ -1,0 +1,14 @@
+[
+  {
+    "name": "build",
+    "command": "npm.cmd run build",
+    "exitCode": 0,
+    "seconds": 6.8
+  },
+  {
+    "name": "embedded",
+    "command": "node --import tsx tests/embedded.ts",
+    "exitCode": 0,
+    "seconds": 51.9
+  }
+]

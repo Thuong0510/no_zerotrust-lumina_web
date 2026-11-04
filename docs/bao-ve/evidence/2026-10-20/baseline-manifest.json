@@ -1,0 +1,22 @@
+{
+  "phase": "baseline",
+  "node": "v24.16.0",
+  "results": [
+    {
+      "command": "npm run test:security",
+      "start": "2026-10-20T02:48:29.129Z",
+      "end": "2026-10-20T02:48:35.205Z",
+      "exitCode": 0,
+      "file": "baseline-security.txt",
+      "sha256": "d1a2cefb727409acb6a34e9a0a75012a339e70fb60031047354915d022b4c507"
+    },
+    {
+      "command": "npm run test:owasp",
+      "start": "2026-10-20T02:48:35.206Z",
+      "end": "2026-10-20T02:48:38.320Z",
+      "exitCode": 1,
+      "file": "baseline-probes.txt",
+      "sha256": "cd04532733b2ab6a2b9a0476ffaba314021ee5bcd1f79d2d402e10ad7da88d1c"
+    }
+  ]
+}

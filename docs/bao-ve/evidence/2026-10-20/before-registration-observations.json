@@ -1,0 +1,39 @@
+{
+  "phase": "before",
+  "timestamp": "2026-10-20T02:52:16.430Z",
+  "environment": "Disposable PGlite; no .env/cloud",
+  "checks": [
+    {
+      "id": "REGISTER-01",
+      "expected": [
+        200,
+        200
+      ],
+      "actual": [
+        409,
+        200
+      ],
+      "pass": false
+    },
+    {
+      "id": "REGISTER-02",
+      "expected": true,
+      "actual": false,
+      "pass": false
+    },
+    {
+      "id": "REGISTER-03",
+      "expected": {
+        "status": "Pending",
+        "role": "Guest"
+      },
+      "actual": {
+        "status": "Pending",
+        "role": "Guest"
+      },
+      "pass": true
+    }
+  ],
+  "passed": 1,
+  "failed": 2
+}

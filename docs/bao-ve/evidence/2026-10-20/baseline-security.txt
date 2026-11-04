@@ -1,0 +1,220 @@
+
+> lumina-mvc-vercel@1.0.0 test:security
+> node --import tsx tests/embedded.ts security
+
+Applied migration 001_initial.sql
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+API rejected {
+  requestId: '647c526e-7b3f-44e3-b8c3-f440c621c423',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '87479a23-aee3-42e2-b6a4-d6e1124f4dd8',
+  method: 'POST',
+  status: 404,
+  resource: 'invalid-route'
+}
+API rejected {
+  requestId: '55277710-11e9-4dd6-a822-60e458138ae2',
+  method: 'POST',
+  status: 404,
+  resource: 'invalid-route'
+}
+API rejected {
+  requestId: '4d0a2349-c3a0-46cc-8c8e-b810ae5e27f3',
+  method: 'POST',
+  status: 404,
+  resource: 'invalid-route'
+}
+API rejected {
+  requestId: '54ea6985-a546-414c-bbfd-64540e0d4be5',
+  method: 'POST',
+  status: 404,
+  resource: 'invalid-route'
+}
+API rejected {
+  requestId: '84337da1-1ec3-4ccc-aead-2f32dbd425fa',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '92d5c819-53aa-4115-bfda-e359a386966b',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '07f8b2ae-ce73-4d59-b100-723938a0dd89',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '7c5f720e-a827-4727-a85a-0daa562064ce',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '0ddcd67f-260f-4e58-8819-6b03ae7bb8fa',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'c9a95aad-c023-4f39-a04e-d11e2619b446',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'c409ae06-ef77-40c8-97e2-4d03f4ffb365',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '9e281950-2d22-46a0-a267-5d0ac8889b0f',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '4aeb2905-da2e-402f-8cfd-511a35155fae',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '50c94945-c372-49b2-944e-af9605aea721',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '27db798a-e071-446a-957b-0ba0293d776c',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '62a89858-27d1-42ee-80ec-01cb0773d9a5',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '5c606c78-41df-4bff-9fa1-c1601de35369',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '21893338-74d1-44a2-8554-047613a7013d',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '2fd16c6a-c148-4813-8c8a-d071a4439162',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'ac052290-e65c-4246-88fd-31dc694ab4be',
+  method: 'POST',
+  status: 429,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '1b225ccd-f21f-4672-ad4d-3813bfbe1b70',
+  method: 'POST',
+  status: 404,
+  resource: 'invalid-route'
+}
+API rejected {
+  requestId: '07c130cb-1cb8-4279-906a-b5e721f12419',
+  method: 'GET',
+  status: 404,
+  resource: 'media'
+}
+API rejected {
+  requestId: 'dd0b8789-ef7f-49db-9a13-f2ece00c2fbb',
+  method: 'PUT',
+  status: 404,
+  resource: 'profile'
+}
+API rejected {
+  requestId: '7de4f266-f72a-4f8f-af43-ff605c20b74c',
+  method: 'GET',
+  status: 404,
+  resource: 'media'
+}
+API rejected {
+  requestId: '70ef15cf-1229-4759-9966-ed88894627f9',
+  method: 'GET',
+  status: 404,
+  resource: 'media'
+}
+API rejected {
+  requestId: 'fe0f1597-5b4d-4a48-bcec-ce233a4f2667',
+  method: 'POST',
+  status: 400,
+  resource: 'auth',
+  action: 'reset'
+}
+API rejected {
+  requestId: 'e543ff9f-c48c-494b-a99d-b1069c8cf1d1',
+  method: 'POST',
+  status: 400,
+  resource: 'auth',
+  action: 'reset'
+}
+API rejected {
+  requestId: '53789ca7-7582-4d67-aa4a-fb4522d832cd',
+  method: 'POST',
+  status: 400,
+  resource: 'auth',
+  action: 'reset'
+}
+API rejected {
+  requestId: '473c28ee-35cf-4caa-b759-6661369c6306',
+  method: 'POST',
+  status: 422,
+  resource: 'products'
+}
+API rejected {
+  requestId: 'dcd7221f-6ce7-4a47-bf32-7e417f9d1712',
+  method: 'POST',
+  status: 400,
+  resource: 'upload'
+}
+API rejected {
+  requestId: '821d29cf-1e3f-4efc-a922-5fc35f54c047',
+  method: 'GET',
+  status: 403,
+  resource: 'bootstrap'
+}
+{"passed":58,"suite":"OWASP security regression","assertions":"Canonical routing/rate limits, private media ownership, dashboard RBAC, reset revocation, malformed input, rollback and response headers"}

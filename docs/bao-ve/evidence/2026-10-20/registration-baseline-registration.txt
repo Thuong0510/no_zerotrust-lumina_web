@@ -1,0 +1,18 @@
+
+> lumina-mvc-vercel@1.0.0 test:owasp-registration
+> node --import tsx tests/embedded.ts owasp-registration
+
+Applied migration 001_initial.sql
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+API rejected {
+  requestId: '7d1da98f-9ec9-41b9-b18d-215312bf90ec',
+  method: 'POST',
+  status: 409,
+  resource: 'auth',
+  action: 'register'
+}
+{"id":"REGISTER-01","expected":[200,200],"actual":[409,200],"pass":false}
+{"id":"REGISTER-02","expected":true,"actual":false,"pass":false}
+{"id":"REGISTER-03","expected":{"status":"Pending","role":"Guest"},"actual":{"status":"Pending","role":"Guest"},"pass":true}
+{"suite":"OWASP registration verification","passed":1,"failed":2}

@@ -1,0 +1,50 @@
+
+> lumina-mvc-vercel@1.0.0 test:owasp
+> node --import tsx tests/embedded.ts owasp
+
+Applied migration 001_initial.sql
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+{"id":"EMAIL-01","description":"Change recovery email without current password","expected":403,"actual":200,"pass":false}
+API rejected {
+  requestId: '8f317222-c345-4387-bed1-0470e2a5c60a',
+  method: 'PUT',
+  status: 422,
+  resource: 'profile'
+}
+{"id":"EMAIL-02","description":"Wrong password cannot authorize recovery email change","expected":403,"actual":422,"pass":false}
+{"id":"EMAIL-03","description":"Legitimate recovery email change succeeds","expected":200,"actual":200,"pass":true}
+{"id":"EMAIL-04","description":"Recovery email change revokes other sessions","expected":401,"actual":200,"pass":false}
+{"id":"EMAIL-05","description":"Recovery token from former email is invalidated","expected":400,"actual":200,"pass":false}
+Error: MOCK_SMTP_UNAVAILABLE
+    at Object.sendMail (D:\2026-2027\TLCN\InterWeb\lumina-mvc-vercel\tests\owasp-verification.ts:52:70)
+    at sendResetEmail (D:\2026-2027\TLCN\InterWeb\lumina-mvc-vercel\backend\src\services\mailService.ts:7:19)
+    at auth (D:\2026-2027\TLCN\InterWeb\lumina-mvc-vercel\backend\src\services\authService.ts:52:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handle (D:\2026-2027\TLCN\InterWeb\lumina-mvc-vercel\backend\src\controllers\apiController.ts:49:28)
+    at async <anonymous> (D:\2026-2027\TLCN\InterWeb\lumina-mvc-vercel\backend\src\models\database.ts:85:22)
+    at async transaction (D:\2026-2027\TLCN\InterWeb\lumina-mvc-vercel\backend\src\models\database.ts:54:18)
+    at async requestTransaction (D:\2026-2027\TLCN\InterWeb\lumina-mvc-vercel\backend\src\models\database.ts:84:12)
+    at async dispatch (D:\2026-2027\TLCN\InterWeb\lumina-mvc-vercel\backend\src\app.ts:42:18)
+    at async <anonymous> (D:\2026-2027\TLCN\InterWeb\lumina-mvc-vercel\tests\owasp-verification.ts:54:17)
+LUMINA request failed { name: 'Error', code: undefined }
+API rejected {
+  requestId: '37a4afc4-a6ee-44ed-b0b1-8322d9604e43',
+  method: 'POST',
+  status: 500,
+  resource: 'auth',
+  action: 'forgot'
+}
+{"id":"SMTP-01","description":"SMTP failure returns same status for existing/missing account","expected":[200,200],"actual":[500,200],"pass":false}
+{"id":"SMTP-02","description":"SMTP failure does not disclose account through response body","expected":true,"actual":false,"pass":false}
+Request failed { name: 'URIError', code: undefined }
+{"id":"URL-01","description":"Malformed URL encoding is a client error, not server failure","expected":400,"actual":500,"pass":false}
+{"id":"URL-02","description":"Malformed URL error is not cacheable","expected":"no-store","actual":null,"pass":false}
+API rejected {
+  requestId: 'aec8f866-3f25-4afe-a2e0-46c683516685',
+  method: 'PUT',
+  status: 401,
+  resource: 'profile'
+}
+{"id":"CSRF-01","description":"Invalid/stale session or CSRF never allows write","expected":true,"actual":true,"pass":true}
+{"suite":"OWASP verification","passed":2,"failed":8}

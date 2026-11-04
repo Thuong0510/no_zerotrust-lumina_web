@@ -1,0 +1,3 @@
+Passed Admin: variants, merge, quantities, totals, checkout, payment previews, persistence, account isolation.
+Passed Employee: variants, merge, quantities, totals, checkout, payment previews, persistence, account isolation.
+Passed: stock availability, API retry, invalid storage, COD review, policy consent, network retry, order navigation and cart clearing.

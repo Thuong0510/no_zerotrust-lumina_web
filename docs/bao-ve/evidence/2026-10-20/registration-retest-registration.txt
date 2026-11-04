@@ -1,0 +1,11 @@
+
+> lumina-mvc-vercel@1.0.0 test:owasp-registration
+> node --import tsx tests/embedded.ts owasp-registration
+
+Applied migration 001_initial.sql
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+{"id":"REGISTER-01","expected":[200,200],"actual":[200,200],"pass":true}
+{"id":"REGISTER-02","expected":true,"actual":true,"pass":true}
+{"id":"REGISTER-03","expected":{"status":"Pending","role":"Guest"},"actual":{"status":"Pending","role":"Guest"},"pass":true}
+{"suite":"OWASP registration verification","passed":3,"failed":0}

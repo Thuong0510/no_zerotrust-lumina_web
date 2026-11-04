@@ -1,0 +1,1 @@
+{"suite":"Account management UI","passed":true,"checks":"New profile fields, approve, lock, delete/cancel/retry, pending request, self-protection"}

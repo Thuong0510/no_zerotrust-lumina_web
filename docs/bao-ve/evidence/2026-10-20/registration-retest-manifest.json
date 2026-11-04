@@ -1,0 +1,14 @@
+{
+  "phase": "registration-retest",
+  "node": "v24.16.0",
+  "results": [
+    {
+      "command": "npm run test:owasp-registration",
+      "start": "2026-10-20T02:52:44.446Z",
+      "end": "2026-10-20T02:52:47.919Z",
+      "exitCode": 0,
+      "file": "registration-retest-registration.txt",
+      "sha256": "7b73fa60c95895870c2c24e54510464f188d61a8e7529a57f5a249d5d3d9d518"
+    }
+  ]
+}

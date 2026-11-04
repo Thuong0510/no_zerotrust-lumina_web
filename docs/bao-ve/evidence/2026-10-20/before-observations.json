@@ -1,0 +1,85 @@
+{
+  "phase": "before",
+  "timestamp": "2026-10-20T02:48:38.045Z",
+  "environment": "Disposable PGlite; mock SMTP; ephemeral loopback HTTP; no .env/cloud",
+  "checks": [
+    {
+      "id": "EMAIL-01",
+      "description": "Change recovery email without current password",
+      "expected": 403,
+      "actual": 200,
+      "pass": false
+    },
+    {
+      "id": "EMAIL-02",
+      "description": "Wrong password cannot authorize recovery email change",
+      "expected": 403,
+      "actual": 422,
+      "pass": false
+    },
+    {
+      "id": "EMAIL-03",
+      "description": "Legitimate recovery email change succeeds",
+      "expected": 200,
+      "actual": 200,
+      "pass": true
+    },
+    {
+      "id": "EMAIL-04",
+      "description": "Recovery email change revokes other sessions",
+      "expected": 401,
+      "actual": 200,
+      "pass": false
+    },
+    {
+      "id": "EMAIL-05",
+      "description": "Recovery token from former email is invalidated",
+      "expected": 400,
+      "actual": 200,
+      "pass": false
+    },
+    {
+      "id": "SMTP-01",
+      "description": "SMTP failure returns same status for existing/missing account",
+      "expected": [
+        200,
+        200
+      ],
+      "actual": [
+        500,
+        200
+      ],
+      "pass": false
+    },
+    {
+      "id": "SMTP-02",
+      "description": "SMTP failure does not disclose account through response body",
+      "expected": true,
+      "actual": false,
+      "pass": false
+    },
+    {
+      "id": "URL-01",
+      "description": "Malformed URL encoding is a client error, not server failure",
+      "expected": 400,
+      "actual": 500,
+      "pass": false
+    },
+    {
+      "id": "URL-02",
+      "description": "Malformed URL error is not cacheable",
+      "expected": "no-store",
+      "actual": null,
+      "pass": false
+    },
+    {
+      "id": "CSRF-01",
+      "description": "Invalid/stale session or CSRF never allows write",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    }
+  ],
+  "passed": 2,
+  "failed": 8
+}

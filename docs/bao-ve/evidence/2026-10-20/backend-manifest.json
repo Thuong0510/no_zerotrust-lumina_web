@@ -1,0 +1,14 @@
+{
+  "phase": "backend",
+  "node": "v24.16.0",
+  "results": [
+    {
+      "command": "npm run test:embedded",
+      "start": "2026-10-20T02:53:30.728Z",
+      "end": "2026-10-20T02:54:11.918Z",
+      "exitCode": 0,
+      "file": "backend-embedded.txt",
+      "sha256": "882dbe39c6c045984ccc66f66c2ee46403ed87dddb08b26f78b92796b1bc8821"
+    }
+  ]
+}

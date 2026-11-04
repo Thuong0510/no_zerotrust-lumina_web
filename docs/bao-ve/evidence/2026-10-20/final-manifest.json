@@ -1,0 +1,54 @@
+{
+  "phase": "final",
+  "node": "v24.16.0",
+  "results": [
+    {
+      "command": "npm run test:embedded",
+      "start": "2026-10-20T02:50:39.135Z",
+      "end": "2026-10-20T02:51:15.925Z",
+      "exitCode": 0,
+      "file": "final-embedded.txt",
+      "sha256": "c06288f38b8308ad939a7605e2ab17b3c4da020921ee1e989675afd84c3185e2"
+    },
+    {
+      "command": "npm run test:shopping",
+      "start": "2026-10-20T02:51:15.926Z",
+      "end": "2026-10-20T02:52:38.314Z",
+      "exitCode": 0,
+      "file": "final-shopping.txt",
+      "sha256": "0d0d34d11bbe08186f38ba9a342fa44954dbe26fe269e905c4c42343f94ed26a"
+    },
+    {
+      "command": "npm run test:storefront",
+      "start": "2026-10-20T02:52:38.314Z",
+      "end": "2026-10-20T02:52:41.377Z",
+      "exitCode": 0,
+      "file": "final-storefront.txt",
+      "sha256": "7a50727dff9fbc408c8f9038a5fd443ff3b43e78a9b1ca6ee74e95747bf7ec33"
+    },
+    {
+      "command": "npm run test:navigation",
+      "start": "2026-10-20T02:52:41.377Z",
+      "end": "2026-10-20T02:52:45.082Z",
+      "exitCode": 0,
+      "file": "final-navigation.txt",
+      "sha256": "bf5bb85afe942e0be15bcf9c4602d47f5563727d052bdc411abc3f72fd7a6090"
+    },
+    {
+      "command": "npm run test:request-url",
+      "start": "2026-10-20T02:52:45.082Z",
+      "end": "2026-10-20T02:52:45.482Z",
+      "exitCode": 0,
+      "file": "final-request-url.txt",
+      "sha256": "9c595c206fcb03953235981da82949202a6dd4753fd76c7dbc0393a8206ca572"
+    },
+    {
+      "command": "npm ls --depth=0",
+      "start": "2026-10-20T02:52:45.482Z",
+      "end": "2026-10-20T02:52:46.615Z",
+      "exitCode": 0,
+      "file": "final-dependencies.txt",
+      "sha256": "576f6e6109ac5bc501cd78fa1e54dd0676405ed1b36bbc56f77f0070cd711835"
+    }
+  ]
+}

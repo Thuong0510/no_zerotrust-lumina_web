@@ -1,0 +1,14 @@
+{
+  "phase": "registration-baseline",
+  "node": "v24.16.0",
+  "results": [
+    {
+      "command": "npm run test:owasp-registration",
+      "start": "2026-10-20T02:52:13.997Z",
+      "end": "2026-10-20T02:52:16.706Z",
+      "exitCode": 1,
+      "file": "registration-baseline-registration.txt",
+      "sha256": "826c370bb859b29e72fab445867dece53dab6a7fef96d125718522b37f8bfa14"
+    }
+  ]
+}

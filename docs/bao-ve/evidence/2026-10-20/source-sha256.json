@@ -1,0 +1,17 @@
+{
+  "backend/src/services/profileService.ts": "28a3903f7c72af75d390484e527d28a76899bc866946ed66b64961f43afb3004",
+  "backend/src/services/authService.ts": "94c924caa8650d9cd908488fcb0a4a3e0e3e4b0135e8be3951aa1875abf22997",
+  "backend/src/controllers/apiController.ts": "03a6625eabfb41fba7f89975e70028f373b8721921aef0f9b2c0e0ec7c88ceac",
+  "backend/src/models/database.ts": "0f005c204250aaff4e746147bb32834b704f2bcdb29620bd50e92609a9da5a0c",
+  "backend/src/server.ts": "34b98dd79981c505b3a474f8bcf1ff2ee8dcfe5b07366e13d29caf3b25578a57",
+  "frontend/src/components/lumina/system-pages.tsx": "2caa27e66f44cf3a5dbc2347081c036b16ef2db074a1623de501b69c433d921a",
+  "tests/owasp-verification.ts": "1d3cb024fad6ccf6ba8f7e857463c42fb9418b9d301ada999f8b14ff6fe4eed3",
+  "tests/owasp-registration.ts": "fef4acc88676a00a58f8cbfde62cd45bfff60f558ff4b555ff9e7e0b3a007d64",
+  "tests/embedded.ts": "6bf81bc5f8e3365a4897ae92b399236a9b3b0aae5ff5bf7a11990338c914b60c",
+  "tests/integration.ts": "7ed2969c63cf39b88fce5528d973891368e206aec02137580b3bed62f94ea4d3",
+  "tests/navigation.tsx": "4aebd6e2cb38d1cbdc2437283f13589bdf04ff1af0da081f593b7ab013ccf462",
+  "scripts/security-evidence.mjs": "16e4d097577e7543db3f4f375e28cc64fc6f97db1b44d117bb32f80c5136a25c",
+  "package.json": "b3cbbae903b08f7fcd3331aaffd2d75ae3d7d9babba3819382bdedc298c879d3",
+  "package-lock.json": "0549ce6c94aa222b93d1d3df1427b216bbe37d673a27088905ffd40131b3b2d2",
+  ".github/workflows/ci.yml": "942290f9981444eac1721117bbb36046d55152f12782f68bbf67b6e81f480f30"
+}

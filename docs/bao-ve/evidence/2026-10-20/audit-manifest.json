@@ -1,0 +1,14 @@
+{
+  "phase": "audit",
+  "node": "v24.16.0",
+  "results": [
+    {
+      "command": "npm audit --json",
+      "start": "2026-10-20T02:48:42.237Z",
+      "end": "2026-10-20T02:48:43.378Z",
+      "exitCode": 0,
+      "file": "audit-npm-audit.json",
+      "sha256": "1d61fc952e8c92c50620b6e29fce3b5c75ae25d39dc47f1e8a0c6490959b16a8"
+    }
+  ]
+}

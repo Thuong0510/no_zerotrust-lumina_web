@@ -1,0 +1,588 @@
+
+> lumina-mvc-vercel@1.0.0 test:embedded
+> npm run build && node --import tsx tests/embedded.ts
+
+
+> lumina-mvc-vercel@1.0.0 build
+> npm run typecheck && vite build --config frontend/vite.config.ts
+
+
+> lumina-mvc-vercel@1.0.0 typecheck
+> tsc --noEmit
+
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 2493 modules transformed.
+rendering chunks...
+computing gzip size...
+frontend/dist/index.html                   0.50 kB │ gzip:   0.37 kB
+frontend/dist/assets/index-_5unYfzo.css   48.70 kB │ gzip:  10.99 kB
+frontend/dist/assets/index-CyKjy1O5.js   752.83 kB │ gzip: 218.51 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 706ms
+Applied migration 001_initial.sql
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+Test SQL error: new row for relation "inventory" violates check constraint "nonnegative_stock" SQL: UPDATE inventory SET quantity=quantity+$1,updated_at=CURRENT_TIMESTAMP WHERE variant_id=$2
+Test SQL error: update or delete on table "product_variants" violates foreign key constraint "inventory_transactions_fk_1" on table "inventory_transactions" SQL: DELETE FROM products WHERE id=$1
+Test SQL error: new row for relation "inventory" violates check constraint "nonnegative_stock" SQL: UPDATE inventory SET quantity=quantity+$1,updated_at=CURRENT_TIMESTAMP WHERE variant_id=$2
+API rejected {
+  requestId: '3f499e20-51ea-43bd-8c57-951c1a1f9dcb',
+  method: 'POST',
+  status: 403,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '5c93f583-82c6-44d0-871c-7cf05e5e5538',
+  method: 'POST',
+  status: 403,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'ca91dfe4-1174-4ade-8ce3-486e04b8b030',
+  method: 'POST',
+  status: 403,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '90dd7825-5ef6-46fa-9c28-1e2d7143fdf7',
+  method: 'POST',
+  status: 403,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'ae6b2b83-3a43-4334-959d-3def075b5a85',
+  method: 'PUT',
+  status: 403,
+  resource: 'profile'
+}
+API rejected {
+  requestId: '7ab38d35-6f0e-4a6d-b0b7-96a73f3ad7a5',
+  method: 'POST',
+  status: 400,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'cf68b145-9189-4c26-8d50-a01c5803b5fa',
+  method: 'GET',
+  status: 403,
+  resource: 'bootstrap'
+}
+API rejected {
+  requestId: 'e2615551-c5a0-40b6-b7f0-bb5d8d67fe34',
+  method: 'PATCH',
+  status: 405,
+  resource: 'bootstrap'
+}
+API rejected {
+  requestId: '255908fb-2867-458d-bc57-966fefee6eed',
+  method: 'POST',
+  status: 415,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'a4fcbfda-6a0c-4f66-91d4-e8ae34ba45ab',
+  method: 'POST',
+  status: 413,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'f039dcbe-d50b-4644-b2f7-0c60eb90f504',
+  method: 'POST',
+  status: 422,
+  resource: 'upload'
+}
+{"passed":183,"database":"PostgreSQL","assertions":"Auth, RBAC, CSRF, CRUD, variants, inventory rollback/concurrency, orders, reports, seed idempotency, password reset, uploads, account lockouts and real HTTP"}
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+API rejected {
+  requestId: '381dacc5-956c-4226-aee7-9469e7b50c2e',
+  method: 'POST',
+  status: 405,
+  resource: 'store'
+}
+API rejected {
+  requestId: 'a55e4dcc-759d-44ad-bb10-0c37c604943c',
+  method: 'GET',
+  status: 400,
+  resource: 'store'
+}
+API rejected {
+  requestId: 'dbe529d0-bfcc-40b3-9fc1-a23d24e54d9e',
+  method: 'GET',
+  status: 400,
+  resource: 'store'
+}
+API rejected {
+  requestId: 'ee5ef098-07d7-430b-82a1-5517ec8cef4d',
+  method: 'GET',
+  status: 404,
+  resource: 'invalid-route'
+}
+API rejected {
+  requestId: 'c69bc3ba-8b2b-4646-95a8-3f7879b4392b',
+  method: 'GET',
+  status: 401,
+  resource: 'products'
+}
+API rejected {
+  requestId: '6efda05b-2793-4927-88ef-23f3db3fce6a',
+  method: 'GET',
+  status: 401,
+  resource: 'users'
+}
+API rejected {
+  requestId: '14636659-6d04-481f-9083-5c72f7f7d6c7',
+  method: 'GET',
+  status: 401,
+  resource: 'orders'
+}
+API rejected {
+  requestId: 'a69febe6-9254-41d6-b612-4608853c3a72',
+  method: 'GET',
+  status: 401,
+  resource: 'inventory'
+}
+API rejected {
+  requestId: '36abdd94-3770-4d05-b22d-b98ac07287d4',
+  method: 'GET',
+  status: 401,
+  resource: 'customers'
+}
+API rejected {
+  requestId: '372228a1-d455-494c-9faf-923995e7c9b5',
+  method: 'GET',
+  status: 401,
+  resource: 'checkout'
+}
+API rejected {
+  requestId: 'd0f807b3-c469-41c4-b665-4a785cfeaa25',
+  method: 'POST',
+  status: 401,
+  resource: 'checkout'
+}
+API rejected {
+  requestId: 'ad97ca70-4104-4b2e-b3f5-85c156483c07',
+  method: 'GET',
+  status: 404,
+  resource: 'store'
+}
+API rejected {
+  requestId: 'e24f88fb-df18-46b3-b770-2ab8dde1fb3f',
+  method: 'GET',
+  status: 404,
+  resource: 'store'
+}
+API rejected {
+  requestId: '569d47e7-9daf-4470-b804-5e93f5f862d1',
+  method: 'GET',
+  status: 401,
+  resource: 'media'
+}
+API rejected {
+  requestId: '2cbd5381-14a0-49ff-818a-403d76d81b1f',
+  method: 'GET',
+  status: 404,
+  resource: 'store'
+}
+API rejected {
+  requestId: '6895f82c-750a-42cf-86fe-8d170d2aea03',
+  method: 'GET',
+  status: 401,
+  resource: 'my-orders'
+}
+API rejected {
+  requestId: '1d7c8505-f4b9-46b4-b63c-4180429e6d48',
+  method: 'POST',
+  status: 403,
+  resource: 'checkout'
+}
+API rejected {
+  requestId: '3628d327-bc78-4717-b597-480c8da5ccac',
+  method: 'POST',
+  status: 409,
+  resource: 'checkout'
+}
+API rejected {
+  requestId: '71f80803-04ba-44c9-9f56-3e1c9b310d2b',
+  method: 'POST',
+  status: 422,
+  resource: 'checkout'
+}
+API rejected {
+  requestId: '658955e2-93ec-463f-a233-2a5f91ff23b2',
+  method: 'POST',
+  status: 422,
+  resource: 'checkout'
+}
+API rejected {
+  requestId: 'aed3e103-6667-4770-a9d2-6015b31e7c10',
+  method: 'POST',
+  status: 422,
+  resource: 'checkout'
+}
+API rejected {
+  requestId: 'e7619eb2-dbca-4d6a-950b-e262c05ddf20',
+  method: 'POST',
+  status: 422,
+  resource: 'checkout'
+}
+API rejected {
+  requestId: '73cf5b44-765f-4f88-9804-f5dd07de6fc7',
+  method: 'POST',
+  status: 409,
+  resource: 'checkout'
+}
+API rejected {
+  requestId: '793d8af4-d635-4696-8399-83dd6511b80a',
+  method: 'GET',
+  status: 404,
+  resource: 'my-orders'
+}
+API rejected {
+  requestId: 'c5e73bb1-10ed-4099-97f1-6d6170b30b7c',
+  method: 'POST',
+  status: 404,
+  resource: 'my-orders'
+}
+API rejected {
+  requestId: '0dedd169-29f0-4765-bede-09015718aadf',
+  method: 'GET',
+  status: 400,
+  resource: 'my-orders'
+}
+API rejected {
+  requestId: '9426d1b4-3ac3-4a92-a02e-aabd31a6270a',
+  method: 'GET',
+  status: 403,
+  resource: 'orders'
+}
+API rejected {
+  requestId: '72891506-5149-4bcf-a820-eafe9e3e86cb',
+  method: 'GET',
+  status: 403,
+  resource: 'customers'
+}
+API rejected {
+  requestId: 'e4559b36-1fd8-4bf5-a7b1-f85ce7d90b0a',
+  method: 'POST',
+  status: 404,
+  resource: 'notifications'
+}
+API rejected {
+  requestId: '3101a92a-2a35-44eb-9a29-d44d311af410',
+  method: 'POST',
+  status: 409,
+  resource: 'checkout'
+}
+API rejected {
+  requestId: 'cc3fef68-0c04-452a-ba7b-47e19d024837',
+  method: 'POST',
+  status: 409,
+  resource: 'my-orders'
+}
+API rejected {
+  requestId: '775efda3-c4fa-4c11-9d65-3a83d394a623',
+  method: 'POST',
+  status: 409,
+  resource: 'checkout'
+}
+API rejected {
+  requestId: 'ee94c83c-5676-43e8-912d-5b0c9fbc1f41',
+  method: 'POST',
+  status: 409,
+  resource: 'checkout'
+}
+{"passed":74,"assertions":"COD, shipping/free threshold, quote price changes, snapshots, account isolation, private notifications, retry/concurrency, cancellation and stock rollback"}
+Applied migration 001_initial.sql
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+API rejected {
+  requestId: '3c6350c9-25c6-43e9-a74e-53138b27a1e5',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '87c1f502-7d8f-4877-a098-7b66c2d0933f',
+  method: 'POST',
+  status: 404,
+  resource: 'invalid-route'
+}
+API rejected {
+  requestId: '1409189d-7262-44e0-beda-1e343bb74f44',
+  method: 'POST',
+  status: 404,
+  resource: 'invalid-route'
+}
+API rejected {
+  requestId: '54b7bd6e-78a8-43be-88ec-2c7c91f320b7',
+  method: 'POST',
+  status: 404,
+  resource: 'invalid-route'
+}
+API rejected {
+  requestId: '1cd13247-ea91-495a-887b-675130605928',
+  method: 'POST',
+  status: 404,
+  resource: 'invalid-route'
+}
+API rejected {
+  requestId: 'edae4074-a58d-480d-b678-09a7a462467f',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '0f82148b-7451-4846-90f7-e3b243fb2ada',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '3169ba63-ad03-46f2-b6d1-9f35103e9830',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'dadeadcb-cff2-45fb-b24a-5af1cd36589f',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '8baad64f-9e9e-4b28-90a9-69e93c548b44',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '3adf51f8-3427-4570-a7df-5bff820a711f',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'e03c8d77-ae80-4553-a742-d30eecef50e7',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'f4d27715-c0e7-4e3f-b4cf-1b0873938d4d',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '0515cdbe-89e2-4df7-b70d-db3897809c0b',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '0926aecc-0caf-4c12-aae8-8576d70e282f',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '2c888a04-2906-464b-9fb2-8312aa4b3fe8',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '3fc6a419-217d-4504-9aa0-af3b2d2204e4',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'ab1011ed-4317-4033-9d50-72f3ee4503ab',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'a0affcdb-b861-4698-9ef8-da7daf2afcdc',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'dab25c3c-c5df-49e8-af79-e8502bee91e1',
+  method: 'POST',
+  status: 401,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: '1d13268d-1080-4472-86c3-053cb700cbff',
+  method: 'POST',
+  status: 429,
+  resource: 'auth',
+  action: 'login'
+}
+API rejected {
+  requestId: 'dde60754-1045-4d15-9149-be7b4ffe50c3',
+  method: 'POST',
+  status: 404,
+  resource: 'invalid-route'
+}
+API rejected {
+  requestId: '34e74e8d-9eda-45af-bc17-d6f54c5ae13a',
+  method: 'GET',
+  status: 404,
+  resource: 'media'
+}
+API rejected {
+  requestId: '6f4e3040-9a77-4538-a201-eb6fa6d8d4eb',
+  method: 'PUT',
+  status: 404,
+  resource: 'profile'
+}
+API rejected {
+  requestId: '797ca05d-9548-45da-98eb-ac258b9e071b',
+  method: 'GET',
+  status: 404,
+  resource: 'media'
+}
+API rejected {
+  requestId: 'f42564ce-679f-4d0f-b379-c0712da52aa4',
+  method: 'GET',
+  status: 404,
+  resource: 'media'
+}
+API rejected {
+  requestId: 'fa3dfb15-08b2-4160-b367-95e18400193a',
+  method: 'POST',
+  status: 400,
+  resource: 'auth',
+  action: 'reset'
+}
+API rejected {
+  requestId: 'd5e6008a-2d5f-4c69-bf5d-f40730b9ca99',
+  method: 'POST',
+  status: 400,
+  resource: 'auth',
+  action: 'reset'
+}
+API rejected {
+  requestId: 'd5c12aa4-927d-4e31-aca5-725bbbca6d8f',
+  method: 'POST',
+  status: 400,
+  resource: 'auth',
+  action: 'reset'
+}
+API rejected {
+  requestId: 'ec301d30-46b9-4ba3-befb-34a30173aa3d',
+  method: 'POST',
+  status: 422,
+  resource: 'products'
+}
+API rejected {
+  requestId: 'c0cdcb5e-52d3-4d37-9de5-41e624ea98fa',
+  method: 'POST',
+  status: 400,
+  resource: 'upload'
+}
+API rejected {
+  requestId: 'c5863205-7e71-481d-b652-4b8b71d89409',
+  method: 'GET',
+  status: 403,
+  resource: 'bootstrap'
+}
+{"passed":58,"suite":"OWASP security regression","assertions":"Canonical routing/rate limits, private media ownership, dashboard RBAC, reset revocation, malformed input, rollback and response headers"}
+Applied migration 001_initial.sql
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+API rejected {
+  requestId: 'a19e234b-8ba1-42a1-8a7c-5034057d18c1',
+  method: 'PUT',
+  status: 403,
+  resource: 'profile'
+}
+{"id":"EMAIL-01","description":"Change recovery email without current password","expected":403,"actual":403,"pass":true}
+API rejected {
+  requestId: '66f68935-8834-434f-9d05-2670d670b681',
+  method: 'PUT',
+  status: 403,
+  resource: 'profile'
+}
+{"id":"EMAIL-02","description":"Wrong password cannot authorize recovery email change","expected":403,"actual":403,"pass":true}
+{"id":"EMAIL-03","description":"Legitimate recovery email change succeeds","expected":200,"actual":200,"pass":true}
+API rejected {
+  requestId: '25cfc9c7-16dd-4b18-b7c3-3d075d049c72',
+  method: 'GET',
+  status: 401,
+  resource: 'profile'
+}
+{"id":"EMAIL-04","description":"Recovery email change revokes other sessions","expected":401,"actual":401,"pass":true}
+API rejected {
+  requestId: '85325f50-8a6a-465a-b054-1b7031832fe4',
+  method: 'POST',
+  status: 400,
+  resource: 'auth',
+  action: 'reset'
+}
+{"id":"EMAIL-05","description":"Recovery token from former email is invalidated","expected":400,"actual":400,"pass":true}
+Security event { action: 'PASSWORD_RESET_DELIVERY_FAILED', userId: 6 }
+{"id":"SMTP-01","description":"SMTP failure returns same status for existing/missing account","expected":[200,200],"actual":[200,200],"pass":true}
+{"id":"SMTP-02","description":"SMTP failure does not disclose account through response body","expected":true,"actual":true,"pass":true}
+{"id":"URL-01","description":"Malformed URL encoding is a client error, not server failure","expected":400,"actual":400,"pass":true}
+{"id":"URL-02","description":"Malformed URL error is not cacheable","expected":"no-store","actual":"no-store","pass":true}
+API rejected {
+  requestId: 'c8364b06-29c0-4e17-9d87-7e2c7ac3999c',
+  method: 'PUT',
+  status: 403,
+  resource: 'profile'
+}
+{"id":"CSRF-01","description":"Invalid/stale session or CSRF never allows write","expected":true,"actual":true,"pass":true}
+{"suite":"OWASP verification","passed":10,"failed":0}
+Applied migration 001_initial.sql
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+{"id":"REGISTER-01","expected":[200,200],"actual":[200,200],"pass":true}
+{"id":"REGISTER-02","expected":true,"actual":true,"pass":true}
+{"id":"REGISTER-03","expected":{"status":"Pending","role":"Guest"},"actual":{"status":"Pending","role":"Guest"},"pass":true}
+{"suite":"OWASP registration verification","passed":3,"failed":0}
+Applied migration 001_initial.sql
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+Created initial admin; no demo records inserted.
+{"passed":9,"mode":"production","assertions":"Admin-only initialization, idempotent startup, no demo records, Secure cookie, no reset token disclosure"}
+Applied migration 001_initial.sql
+Applied migration 002_customer_checkout.sql
+Applied migration 003_media_ownership.sql
+Created initial admin; no demo records inserted.
+Runtime role ready. Set Vercel DATABASE_URL username to lumina_app.<project-ref> and use its password.
+{"passed":7,"assertions":"Runtime role read/write, no DROP, no audit/migration DELETE, RLS enabled, no superuser/bypass"}

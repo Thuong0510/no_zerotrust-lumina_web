@@ -1,0 +1,5 @@
+
+> lumina-mvc-vercel@1.0.0 test:request-url
+> node --import tsx tests/request-url.ts
+
+Passed 55 request URL checks: local aliases, Vite ports, invalid Host, remote peers, production.

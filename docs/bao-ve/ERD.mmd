@@ -1,0 +1,205 @@
+%% LUMINA FASHION — schema mã nguồn sau migration 001–003, 20/10/2026.
+%% 24 bảng gồm schema_migrations do runner tạo; 24 khóa ngoại.
+%% Rút gọn các cột created_at / updated_at lặp lại để dễ đọc.
+%% o| ở phía cha: FK tại con cho phép NULL; o{ ở phía con: 0..n.
+%% UK ghép được giải thích trong CONG-NGHE-LUONG-HOAT-DONG-ERD.md.
+erDiagram
+  categories ||--o{ products : category_id
+  suppliers ||--o{ products : supplier_id
+  products ||--o{ product_variants : product_id
+  product_variants ||--o| inventory : variant_id_unique
+  product_variants ||--o{ inventory_transactions : variant_id
+  product_variants ||--o{ order_items : variant_id
+  customers ||--o{ orders : customer_id
+  orders ||--o{ order_items : order_id
+  users ||--o{ orders : created_by
+  users o|--o{ orders : buyer_id_nullable
+  users o|--o| customers : user_id_nullable_unique
+  employees o|--o{ users : employee_id_nullable
+  users ||--o{ user_roles : user_id
+  roles ||--o{ user_roles : role_id
+  roles ||--o{ role_permissions : role_id
+  permissions ||--o{ role_permissions : permission_id
+  users ||--o{ sessions : user_id
+  users ||--o{ password_reset_tokens : user_id
+  users o|--o{ activity_logs : user_id_nullable
+  users o|--o{ inventory_transactions : employee_id_actually_user_id
+  users ||--o{ notification_reads : user_id
+  notifications ||--o{ notification_reads : notification_id
+  users o|--o{ notifications : target_user_id_nullable
+  users ||--o{ uploaded_media : user_id
+
+  categories {
+    integer id PK
+    text name
+    text description
+  }
+  suppliers {
+    integer id PK
+    text name
+    text contact_person
+    text phone
+    text email
+    text address
+    text status
+  }
+  products {
+    integer id PK
+    integer category_id FK
+    integer supplier_id FK
+    text name
+    text sku UK
+    text description
+    numeric price
+    numeric cost
+    text image
+    text status
+  }
+  product_variants {
+    integer id PK
+    integer product_id FK
+    text sku UK
+    text size
+    text color
+  }
+  inventory {
+    integer id PK
+    integer variant_id FK,UK
+    integer quantity
+    integer threshold
+  }
+  inventory_transactions {
+    integer id PK
+    integer variant_id FK
+    integer employee_id FK
+    text action
+    integer quantity
+    text note
+  }
+  customers {
+    integer id PK
+    integer user_id FK,UK
+    text name
+    text email
+    text phone
+    text address
+  }
+  orders {
+    integer id PK
+    text code UK
+    integer customer_id FK
+    integer created_by FK
+    integer buyer_id FK
+    integer revision
+    numeric total
+    text payment_method
+    text payment
+    text status
+    text shipping_name
+    text shipping_email
+    text shipping_phone
+    text shipping_address
+    text shipping_notes
+    numeric shipping_fee
+    text checkout_key
+    text checkout_fingerprint
+  }
+  order_items {
+    integer id PK
+    integer order_id FK
+    integer variant_id FK
+    integer quantity
+    numeric price
+  }
+  employees {
+    integer id PK
+    text name
+    text email UK
+    text phone
+    text birthday
+    text address
+    text department
+    text position
+    text join_date
+    text avatar
+    text status
+  }
+  users {
+    integer id PK
+    integer employee_id FK
+    text name
+    text username UK
+    text email UK
+    text phone
+    text avatar
+    text status
+    text password_hash
+    integer failed_attempts
+    bigint locked_until
+    timestamptz last_login
+  }
+  roles {
+    integer id PK
+    text name UK
+  }
+  permissions {
+    integer id PK
+    text name UK
+  }
+  user_roles {
+    integer user_id PK,FK
+    integer role_id PK,FK
+  }
+  role_permissions {
+    integer role_id PK,FK
+    integer permission_id PK,FK
+  }
+  sessions {
+    text token_hash PK
+    integer user_id FK
+    text csrf
+    bigint expires_at
+  }
+  password_reset_tokens {
+    text token_hash PK
+    integer user_id FK
+    bigint expires_at
+    integer used
+  }
+  rate_limits {
+    text key PK
+    integer count
+    integer rate_window
+  }
+  notifications {
+    integer id PK
+    integer target_user_id FK
+    text title
+    text message
+    text audience
+  }
+  notification_reads {
+    integer user_id PK,FK
+    integer notification_id PK,FK
+  }
+  activity_logs {
+    integer id PK
+    integer user_id FK
+    text action
+    text resource
+    text ip
+  }
+  uploaded_media {
+    text url PK
+    integer user_id FK
+    timestamptz created_at
+  }
+  settings {
+    text key PK
+    text value
+  }
+  schema_migrations {
+    text name PK
+    text checksum
+    timestamptz applied_at
+  }

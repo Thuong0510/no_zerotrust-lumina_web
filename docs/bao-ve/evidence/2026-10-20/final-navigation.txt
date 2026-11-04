@@ -1,0 +1,5 @@
+
+> lumina-mvc-vercel@1.0.0 test:navigation
+> node --import tsx tests/navigation.tsx
+
+Passed: all sidebar pages, profile, hash navigation, stale payloads, reversed responses, stale 401, error recovery, unmount (StrictMode).
